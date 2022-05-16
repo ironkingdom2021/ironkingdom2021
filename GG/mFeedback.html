@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>北京健康宝</title>
+<script language=Javascript>
+    function time(){
+        t_div = document.getElementById('showtime');
+        var now=new Date()
+        t_div.innerHTML = now.getFullYear()+"年"+(now.getMonth()+1)+"月"+now.getDate()+"日<br/>"
+        +now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+        setTimeout(time,1000);
+    }
+</script>
+<script language=Javascript>
+    function time1(){
+        t_div = document.getElementById('showtime1');
+        var now=new Date()
+        t_div.innerHTML = (now.getMonth()+1)+"-"+now.getDate();
+        setTimeout(time1,1000);
+    }
+</script>
+<script language=Javascript>
+    function time2(){
+        t_div = document.getElementById('showtime2');
+        var now=new Date()
+        t_div.innerHTML = "&nbsp;&nbsp;"+now.getHours()+":"+now.getMinutes();
+        setTimeout(time2,1000);
+    }
+</script>
+<script language=Javascript>
+    function time3(){
+        t_div = document.getElementById('showtime3');
+        var now=new Date()
+        t_div.innerHTML = (now.getMonth()+1)+"-"+now.getDate()+"&nbsp;";
+        setTimeout(time3,1000);
+    }
+</script>
+<script type="text/javascript">
+    function div_tab(tabName){
+        var tabLinkArr=document.getElementsByName("tablink");
+        var tabPicArr=document.getElementById("tabpic").getElementsByTagName("div");
+        for(var i=0;i<tabLinkArr.length;i++){
+            if(i==tabName){
+                tabLinkArr[i].style.color="#ff0000";
+                tabPicArr[i].style.display="block";
+            } else{
+                tabLinkArr[i].style.color="#0000ff";
+                tabPicArr[i].style.display="none";
+            }
+        }
+    }
+    var i=0;
+    function auto_tab_div(){
+    if(i>3){
+        i=0;
+    }
+    div_tab(i);
+        i++;
+    }
+    setInterval("auto_tab_div()",1000);
+</script>
+</head>
+<body onload="time();time1();time2();time3()">
+ <table boder="0" width="100%" height="2200" style="background-image:url('RES/bg1.png'); background-repeat: no-repeat; background-size: 100% 90%;">
+    <tr style="height: 160px">
+        <td width="30%" >&nbsp;
+        </td>
+        <td width="40%">&nbsp;
+        </td>
+        <td width="30%">&nbsp;</td>
+    </tr>  
+    <tr style="height: 10px">
+        <td width="30%">&nbsp;
+        </td>
+        <td width="40%">
+        </td>
+        <td width="30%">&nbsp;</td>
+    </tr>   
+    <tr style="height: 160px">
+        <td width="30%" >&nbsp;
+        </td>
+        <td width="40%" style="text-align: center; font-size: 40px; font-family:宋体;">
+            <div id="showtime" style="text-align: center; font-size: 40px; font-family:宋体;"></div>    
+        </td>
+        <td width="30%">&nbsp;</td>
+    </tr> 
+    <tr style="height: 360px">
+        <td width="30%">&nbsp;
+        </td>
+        <td width="40%">
+            <div id="carousel" style="border:0px solid #000000; float:left; ">
+                <div id="tabpic">
+                    <div style="display:block;"><img src="RES/logo.png" width="580px"  height="580px"/></div>
+                    <div style="display:none;"><img src="RES/logo1.png" width="580px"  height="580px"/></div>
+                    <div style="display:none;"><img src="RES/logo.png" width="580px"  height="580px"/></div>
+                    <div style="display:none;"><img src="RES/logo1.png" width="580px"  height="580px"/></div>
+                </div>
+                <div style="float:right;">
+                    <a href="javascript:void(0)" name="tablink" onclick="div_tab(0)" style="color:#ff0000;"></a>
+                    <a href="javascript:void(0)" name="tablink" onclick="div_tab(1)" style="color:#0000ff;"></a>
+                    <a href="javascript:void(0)" name="tablink" onclick="div_tab(2)" style="color:#0000ff;"></a>
+                    <a href="javascript:void(0)" name="tablink" onclick="div_tab(3)" style="color:#0000ff;"></a>
+                </div>   
+            </div>
+        </td>
+        <td width="30%">&nbsp;</td>
+    </tr>     
+    <tr style="height: 160px">
+        <td width="30%">&nbsp;</td>
+        <td width="40%" style="text-align: center; font-size: 63px; font-family:宋体;">
+            <div id="blink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;扫码未见异常</div>
+                <script language="javascript">
+                    function changeColor(){
+                        var color="green|gray";
+                        color=color.split("|");
+                        document.getElementById("blink").style.color=color[parseInt(Math.random() * color.length)];
+                    }
+                    setInterval("changeColor()",500);
+                </script>
+        </td>
+        <td width="30%">&nbsp;</td>
+    </tr>
+    <tr style="height: 520px">
+        <td width="30%">&nbsp;
+        </td>
+        <td width="40%">
+        </td>
+        <td width="30%">&nbsp;</td>
+    </tr> 
+    <tr style="height: 70px" >
+        <td width="30%" >&nbsp;</td>
+        <td width="40%" style="text-align: right;">
+            <div id="showtime1" style="font-size: 43px; font-family:宋体;"></div>
+        </td>
+        <td width="30%" style="text-align: left;">
+            <div id="showtime2" style="font-size: 43px; font-family:宋体;"></div>
+        </td>
+    </tr> 
+    <tr style="height: 80px">
+        <td width="30%">&nbsp;
+        </td>
+        <td width="40%" style="text-align: right;">
+            <div id="showtime3" style="font-size: 43px; font-family:宋体;color:#ae0000"></div>
+        </td>
+        <td width="30%" style="font-size: 43px; font-family:宋体;color:#ae0000">24:00</td>
+    </tr> 
+    <tr>
+        <td width="30%">&nbsp;
+        </td>
+        <td width="40%">
+        </td>
+        <td width="30%">&nbsp;</td>
+    </tr> 
+ </table>
+</body>
+</html>

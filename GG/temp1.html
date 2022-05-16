@@ -1,0 +1,46 @@
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body style="background-color: pink">
+    <div id="carousel" style="border:1px solid #000000; float:left; ">
+        <div id="tabpic">
+            <div style="display:block;"><img src="RES/logo.png" width="580px"  height="580px"/></div>
+            <div style="display:none;"><img src="RES/logo1.png" width="580px"  height="580px"/></div>
+            <div style="display:none;"><img src="RES/logo.png" width="580px"  height="580px"/></div>
+            <div style="display:none;"><img src="RES/logo1.png" width="580px"  height="580px"/></div>
+        </div>
+        
+        <div style="float:right;">
+            <a href="javascript:void(0)" name="tablink" onclick="div_tab(0)" style="color:#ff0000;"></a>
+            <a href="javascript:void(0)" name="tablink" onclick="div_tab(1)" style="color:#0000ff;"></a>
+            <a href="javascript:void(0)" name="tablink" onclick="div_tab(2)" style="color:#0000ff;"></a>
+            <a href="javascript:void(0)" name="tablink" onclick="div_tab(3)" style="color:#0000ff;"></a>
+        </div>
+        
+    </div>
+</body>
+<script type="text/javascript">
+    function div_tab(tabName){
+        var tabLinkArr=document.getElementsByName("tablink");
+        var tabPicArr=document.getElementById("tabpic").getElementsByTagName("div");
+        for(var i=0;i<tabLinkArr.length;i++){
+            if(i==tabName){
+                tabLinkArr[i].style.color="#ff0000";
+                tabPicArr[i].style.display="block";
+            } else{
+                tabLinkArr[i].style.color="#0000ff";
+                tabPicArr[i].style.display="none";
+            }
+        }
+    }
+    var i=0;
+    function auto_tab_div(){
+    if(i>3){
+        i=0;
+    }
+    div_tab(i);
+        i++;
+    }
+    setInterval("auto_tab_div()",1000);
+</script>
