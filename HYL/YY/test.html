@@ -5,57 +5,39 @@
     <meta charset="utf-8">
 </head>
 <body>
-<input type="button" title="开启摄像头" value="开启摄像头" onclick="getMedia()" />
-<input type="button" title="开启摄像头" value="关闭摄像头" onclick="closeMedia()" />
-<button id="snap" onclick="takePhoto()">拍照</button>
-<button id="snap" onclick="toBase64()">上传</button>
- 
-<video id="video" width="500px" height="500px" autoplay="autoplay">您的浏览器不支持 video 标签</video>
-<canvas id="canvas" width="500px" height="500px"></canvas>
- 
-<script>
-	let _this=this;
-    //获得video摄像头区域
-    let video = document.getElementById("video");
-    function getMedia() {
-        let constraints = {
-            video: {width: 500, height: 500},
-            audio: false
-        };
-        /*
-        这里介绍新的方法:H5新媒体接口 navigator.mediaDevices.getUserMedia()
-        这个方法会提示用户是否允许媒体输入,(媒体输入主要包括相机,视频采集设备,屏幕共享服务,麦克风,A/D转换器等)
-        返回的是一个Promise对象。
-        如果用户同意使用权限,则会将 MediaStream 对象作为resolve()的参数传给then()
-        如果用户拒绝使用权限,或者请求的媒体资源不可用,则会将 PermissionDeniedError 作为 reject()的参数传给catch()
-        */
-        let promise = navigator.mediaDevices.getUserMedia(constraints);
-        promise.then(function (MediaStream) {
-			_this.MediaStreamTrack = typeof MediaStream.stop === 'function'?MediaStream:MediaStream.getTracks()[0];
-            video.srcObject = MediaStream;
-            video.play();
-        }).catch(function (PermissionDeniedError) {
-            console.log(PermissionDeniedError);
-        })
-    }
-    function takePhoto() {
-        //获得Canvas对象
-        let canvas = document.getElementById("canvas");
-        let ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, 500, 500);
-    }
-	function closeMedia() {
-		this.MediaStreamTrack && this.MediaStreamTrack.stop();
-	}
-	function toBase64() {
-        //获得Canvas对象
-        let canvas = document.getElementById("canvas");
-		//从画布上获取照片数据  
-		var imgData = canvas.toDataURL();  
-		//将图片转换为Base64  
-		var base64Data = imgData.substr(22);
-		console.log("base64Data:"+base64Data);
-	}
-</script>
+    <input type="button" value="OpenVideo" id="btnOpenVideo" />
+<input type="button" value="TakePicture" id="btnTakePicture" />
+<input type="button" value="CloseVideo" id="btnCloseVideo" />
+<br />
+    <video style="width:500px;height:500px;border:1px solid #000000;" id="videoTest"></video>
+    <canvas style="width:500px;height:500px;border:1px solid #000000;" id="canvasTest"></canvas>
+    <script type="text/javascript">
+        window.onload = function () {
+    　　　　let btnOpenVideo = document.getElementById('btnOpenVideo');
+    　　　　let btnTakePicture = document.getElementById('btnTakePicture');
+    　　　　let btnCloseVideo = document.getElementById('btnCloseVideo');
+    　　　　let video = document.getElementById('videoTest');
+    　　　　let canvas = document.getElementById('canvasTest').getContext('2d');
+    　　　　btnOpenVideo.onclick = function () {
+    　　　　　　window.navigator.getUserMedia({
+    　　　　　　　　video: true/*视频/摄像头*/
+    　　　　　　　　/*audio:true*//*音频/麦克风*/
+    　　　　　　}, function (param) {
+    　　　　　　　　video.src = window.URL.createObjectURL(param);/*设置video控件路径,实时显示摄像头的图像*/
+    　　　　　　　　btnCloseVideo.onclick = function () {/*关闭摄像头*/
+    　　　　　　　　　　if (param.getTracks())/*Chrome*/
+    　　　　　　　　　　　　param.getTracks()[0].stop();
+    　　　　　　　　　　else
+    　　　　　　　　　　　　param.stop();
+    　　　　　　　　};
+    　　　　　　　　btnTakePicture.onclick = function () {/*拍照*/
+    　　　　　　　　　　canvas.drawImage(document.getElementById('videoTest'), 0, 0, 500, 500);/*将拍摄的照片画到canvas中*/
+    　　　　　　　　};
+    　　　　　　}, function (err) {
+    　　　　　　　　alert(err);
+    　　　　　　});
+    　　　　};
+    　　};
+    </script>
 </body>
 </html>
