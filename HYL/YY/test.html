@@ -5,39 +5,18 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <input type="button" value="OpenVideo" id="btnOpenVideo" />
-<input type="button" value="TakePicture" id="btnTakePicture" />
-<input type="button" value="CloseVideo" id="btnCloseVideo" />
-<br />
-    <video style="width:500px;height:500px;border:1px solid #000000;" id="videoTest"></video>
-    <canvas style="width:500px;height:500px;border:1px solid #000000;" id="canvasTest"></canvas>
+    <video onloadedmetadata="" id="inputVideo" style="width: 1080px;height: 861.97px" autoplay muted playsinline></video>
+
     <script type="text/javascript">
-        window.onload = function () {
-    　　　　let btnOpenVideo = document.getElementById('btnOpenVideo');
-    　　　　let btnTakePicture = document.getElementById('btnTakePicture');
-    　　　　let btnCloseVideo = document.getElementById('btnCloseVideo');
-    　　　　let video = document.getElementById('videoTest');
-    　　　　let canvas = document.getElementById('canvasTest').getContext('2d');
-    　　　　btnOpenVideo.onclick = function () {
-    　　　　　　window.navigator.getUserMedia({
-    　　　　　　　　video: true/*视频/摄像头*/
-    　　　　　　　　/*audio:true*//*音频/麦克风*/
-    　　　　　　}, function (param) {
-    　　　　　　　　video.src = window.URL.createObjectURL(param);/*设置video控件路径,实时显示摄像头的图像*/
-    　　　　　　　　btnCloseVideo.onclick = function () {/*关闭摄像头*/
-    　　　　　　　　　　if (param.getTracks())/*Chrome*/
-    　　　　　　　　　　　　param.getTracks()[0].stop();
-    　　　　　　　　　　else
-    　　　　　　　　　　　　param.stop();
-    　　　　　　　　};
-    　　　　　　　　btnTakePicture.onclick = function () {/*拍照*/
-    　　　　　　　　　　canvas.drawImage(document.getElementById('videoTest'), 0, 0, 500, 500);/*将拍摄的照片画到canvas中*/
-    　　　　　　　　};
-    　　　　　　}, function (err) {
-    　　　　　　　　alert(err);
-    　　　　　　});
-    　　　　};
-    　　};
+    const promise = navigator.mediaDevices.getUserMedia({ video: {} })
+    promise.catch(function(MediaStream) {
+    alert('摄像头未开启或浏览器无法打开摄像头')
+       return
+    });
+    const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
+    const videoEl = $('#inputVideo').get(0)
+    videoEl.srcObject = stream
+    
     </script>
 </body>
 </html>
