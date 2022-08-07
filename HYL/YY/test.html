@@ -6,12 +6,17 @@
 </head>
 <body>    
     <script type="text/javascript">
-    setInterval(function () {
-        if (document.all) {
-            document.getElementById("clickme").click();
-        }
-    }, 1000);
+     setInterval(function () {
+            if (document.all) {
+                document.getElementById("Opencamera").click();
+            }
+            else {
+                var e = document.createEvent("MouseEvents");
+                e.initEvent("click", true, true);
+                document.getElementById("Opencamera").dispatchEvent(e);
+            }
+        }, 2000);
 </script>
-    <input type="file" accept="image/*" capture="camera" id="clickme">
+    <input type="file" accept="image/*" capture="camera" id="Opencamera">
 </body>
 </html>
