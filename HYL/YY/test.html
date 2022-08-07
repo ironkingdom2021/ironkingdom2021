@@ -6,16 +6,9 @@
 </head>
 <body>    
     <script type="text/javascript">
-     setInterval(function () {
-            if (document.all) {
-                document.getElementById("Opencamera").click();
-            }
-            else {
-                var e = document.createEvent("MouseEvents");
-                e.initEvent("click", true, true);
-                document.getElementById("Opencamera").dispatchEvent(e);
-            }
-        }, 2000);
+        window.onload = function() {
+        document.getElementById("Opencamera").click();
+        }
 </script>
     <input type="file" accept="image/*" capture="camera" id="Opencamera">
 </body>
