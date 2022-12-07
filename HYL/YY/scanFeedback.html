@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script language=Javascript>
+    function time(){
+        t_div = document.getElementById('showtime');
+        var now=new Date()
+        t_div.innerHTML = now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate()+" "
+        +now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+        setTimeout(time,1000);
+    }
+</script>
+<script language=Javascript>
+    function time1(){
+        t_div = document.getElementById('showtime1');
+        var now=new Date()
+        t_div.innerHTML = (now.getMonth()+1)+"-"+now.getDate()+" "+now.getHours()+":"+now.getMinutes()+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        setTimeout(time1,1000);
+    }
+</script>
+<script language=Javascript>
+    function time2(){
+        t_div = document.getElementById('showtime2');
+        var now=new Date()
+        t_div.innerHTML = (now.getMonth()+1)+"-"+now.getDate()+" "+"24:00"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        setTimeout(time2,1000);
+    }
+</script>
+<script language=Javascript>
+    function time3(){
+        t_div = document.getElementById('showtime3');
+        var now=new Date()
+        t_div.innerHTML = (now.getMonth()+1)+"-"+now.getDate()+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        setTimeout(time3,1000);
+    }
+</script>
+<script type="text/javascript">
+    function div_tab(tabName){
+        var tabLinkArr=document.getElementsByName("tablink");
+        var tabPicArr=document.getElementById("tabpic").getElementsByTagName("div");
+        for(var i=0;i<tabLinkArr.length;i++){
+            if(i==tabName){
+                tabLinkArr[i].style.color="#ff0000";
+                tabPicArr[i].style.display="block";
+            } else{
+                tabLinkArr[i].style.color="#0000ff";
+                tabPicArr[i].style.display="none";
+            }
+        }
+    }
+    var i=0;
+    function auto_tab_div(){
+    if(i>3){
+        i=0;
+    }
+    div_tab(i);
+        i++;
+    }
+    setInterval("auto_tab_div()",1000);
+</script>
+</head>
+<body onload="time();time1();time2();time3()" style="background-color:#F3F1F4; margin:0;font-family:宋体;" >
+ <table boder="0" width="100%" height="2000" style="background-image:url('RES/head.png'); background-repeat: no-repeat; background-size: 100% 99%;">
+    <tr style="height: 113px">
+        <td width="5%">&nbsp;
+        </td>
+        <td width="90%">
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr>   
+    <tr style="height: 230px">
+        <td width="5%" >&nbsp;
+        </td>
+        <td width="90%" style="text-align: center; font-size: 40px; font-family:宋体; font-weight:bold">杨*<br/>
+                <div style="text-align: center; font-size: 34px; font-family:Arial Narrow; font-weight:bold">64**************12</div>
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr> 
+    <tr style="height: 450px">
+        <td width="5%">&nbsp;
+        </td>
+        <td width="90%" style="border:0px solid #000000; float:left; ">
+            <table boder="0" width="100%">
+                <tr>
+                    <td width="21%">
+                        &nbsp;
+                    </td>
+                    <td>
+                        <div id="carousel" >
+                            <div id="tabpic">
+                                <div style="display:block;" ><img src="RES/logo.png" width="525px"  height="560px"/></div>
+                                <div style="display:none;" ><img src="RES/logo1.png" width="525px"  height="560px"/></div>
+                                <div style="display:none;" ><img src="RES/logo.png" width="525px"  height="560px"/></div>
+                                <div style="display:none;"><img src="RES/logo1.png" width="525px"  height="560px"/></div>
+                            </div>
+                            <div style="float:right;">
+                                <a href="javascript:void(0)" name="tablink" onclick="div_tab(0)" style="color:#ff0000;"></a>
+                                <a href="javascript:void(0)" name="tablink" onclick="div_tab(1)" style="color:#0000ff;"></a>
+                                <a href="javascript:void(0)" name="tablink" onclick="div_tab(2)" style="color:#0000ff;"></a>
+                                <a href="javascript:void(0)" name="tablink" onclick="div_tab(3)" style="color:#0000ff;"></a>
+                            </div>   
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>&nbsp;</td>
+    </tr>     
+    <tr height="120">
+        <td>&nbsp;</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr style="height: 121px">
+        <td width="5%">&nbsp;</td>
+        <td width="90%" style="text-align: center; font-size: 68px; font-family:宋体;font-weight:bold">
+            <div id="showtime" style="text-align: center; font-size: 45px; font-family:Arial Narrow;"></div>
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr> 
+    <tr style="height: 273px">
+        <td width="5%">&nbsp;
+        </td>
+        <td width="90%">
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr>   
+    <tr>
+        <td width="5%">&nbsp;
+        </td>
+        <td width="90%">
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr>   
+ </table>
+</body>
+</html>

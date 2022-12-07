@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>GET VIDEO</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <video onloadedmetadata="" id="inputVideo" style="width: 1080px;height: 861.97px" autoplay muted playsinline></video>
+
+    <script type="text/javascript">
+    const promise = navigator.mediaDevices.getUserMedia({ video: {} })
+    promise.catch(function(MediaStream) {
+    alert('摄像头未开启或浏览器无法打开摄像头')
+       return
+    });
+    const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
+    const videoEl = $('#inputVideo').get(0)
+    videoEl.srcObject = stream
+    
+    </script>
+</body>
+</html>

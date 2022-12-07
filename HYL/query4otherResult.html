@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>北京健康宝</title>
+<script language=Javascript>
+    function time(){
+        t_div = document.getElementById('showtime');
+        var now=new Date()
+        t_div.innerHTML = now.getFullYear()+"年"+(now.getMonth()+1)+"月"+now.getDate()+"日<br/>"
+        +now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+        setTimeout(time,1000);
+    }
+</script>
+<script language=Javascript>
+    function time1(){
+        t_div = document.getElementById('showtime1');
+        var now=new Date()
+        t_div.innerHTML = (now.getMonth()+1)+"-"+now.getDate()+" "+now.getHours()+":"+now.getMinutes()+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        setTimeout(time1,1000);
+    }
+</script>
+<script language=Javascript>
+    function time2(){
+        t_div = document.getElementById('showtime2');
+        var now=new Date()
+        t_div.innerHTML = (now.getMonth()+1)+"-"+now.getDate()+" "+"24:00"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        setTimeout(time2,1000);
+    }
+</script>
+<script language=Javascript>
+    function time3(){
+        t_div = document.getElementById('showtime3');
+        var now=new Date()
+        t_div.innerHTML = (now.getMonth()+1)+"-"+now.getDate()+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        setTimeout(time3,1000);
+    }
+</script>
+<script type="text/javascript">
+    function div_tab(tabName){
+        var tabLinkArr=document.getElementsByName("tablink");
+        var tabPicArr=document.getElementById("tabpic").getElementsByTagName("div");
+        for(var i=0;i<tabLinkArr.length;i++){
+            if(i==tabName){
+                tabLinkArr[i].style.color="#ff0000";
+                tabPicArr[i].style.display="block";
+            } else{
+                tabLinkArr[i].style.color="#0000ff";
+                tabPicArr[i].style.display="none";
+            }
+        }
+    }
+    var i=0;
+    function auto_tab_div(){
+    if(i>3){
+        i=0;
+    }
+    div_tab(i);
+        i++;
+    }
+    setInterval("auto_tab_div()",500);
+</script>
+</head>
+<body onload="time();time1();time2();time3()" style="background-color:#F3F1F4; margin:0;font-family:宋体;" >
+ <table boder="0" width="100%" height="2000" style="background-image:url('RES/head01.png'); background-repeat: no-repeat; background-size: 100% 99%;">
+    <tr style="height: 183px">
+        <td width="5%">&nbsp;
+        </td>
+        <td width="90%">
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr>   
+    <tr style="height: 170px">
+        <td width="5%" >&nbsp;
+        </td>
+        <td width="90%" style="text-align: center; font-size: 40px; font-family:宋体;">
+            <div id="showtime" style="text-align: center; font-size: 40px; font-family:宋体;"></div>    
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr> 
+    <tr style="height: 450px">
+        <td width="5%">&nbsp;
+        </td>
+        <td width="90%" style="border:0px solid #000000; float:left; ">
+            <table boder="0" width="100%">
+                <tr>
+                    <td width="21%">
+                        &nbsp;
+                    </td>
+                    <td width="79%">
+                        <div id="carousel" >
+                            <div id="tabpic">
+                                <div style="display:block;" ><img src="RES/Yaxin.png" width="560px"  height="560px"/></div>
+                                <div style="display:none;" ><img src="RES/Yaxin1.png" width="560px"  height="560px"/></div>
+                                <div style="display:none;" ><img src="RES/Yaxin.png" width="560px"  height="560px"/></div>
+                                <div style="display:none;"><img src="RES/Yaxin1.png" width="560px"  height="560px"/></div>
+                            </div>
+                            <div style="float:right;">
+                                <a href="javascript:void(0)" name="tablink" onclick="div_tab(0)" style="color:#ff0000;"></a>
+                                <a href="javascript:void(0)" name="tablink" onclick="div_tab(1)" style="color:#0000ff;"></a>
+                                <a href="javascript:void(0)" name="tablink" onclick="div_tab(2)" style="color:#0000ff;"></a>
+                                <a href="javascript:void(0)" name="tablink" onclick="div_tab(3)" style="color:#0000ff;"></a>
+                            </div>   
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>&nbsp;</td>
+    </tr>     
+    <tr height="24">
+        <td>&nbsp;</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr style="height: 121px">
+        <td width="5%">&nbsp;</td>
+        <td width="90%" style="text-align: center; font-size: 78px; font-weight:bold;font-family:宋体;color:#5DC83C">
+            &nbsp;&nbsp;&nbsp;未见异常
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr> 
+    <tr style="height: 373px">
+        <td width="5%">&nbsp;
+        </td>
+        <td width="90%">
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr>   
+    <tr style="height: 310px">
+        <td width="5%">&nbsp;
+        </td>
+        <td width="90%">
+            <table style="width:100%;height:100%">
+                <tr style="height: 54px">
+                    <td width="40%" style="font-size: 40px; font-family:宋体;color:#9F9FA1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓 <span style="color:white">姓 姓</span> 名 :
+                    </td>
+                    <td width="60%" style="font-size: 40px; font-family:宋体;text-align: right;">郝*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                </tr>
+                <tr style="height: 54px">
+                    <td style="font-size: 40px; font-family:宋体;color:#9F9FA1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;身 份 证 号 :
+                    </td>
+                    <td style="font-size: 40px; font-family:宋体;text-align: right;">15**************20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                </tr>
+                <tr style="height: 54px">
+                    <td style="font-size: 40px; font-family:宋体;color:#9F9FA1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查 询 时 间 :
+                    </td>
+                    <td style="font-size: 40px; font-family:宋体;text-align: right;"><div id="showtime1" style="font-size: 40px; font-family:宋体;"></div></td>
+                </tr>
+                <tr style="height: 52px">
+                    <td style="font-size: 40px; font-family:宋体;color:#9F9FA1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;失 效 时 间 :
+                    </td>
+                    <td style="font-size: 40px; font-family:宋体;text-align: right;"><div id="showtime2" style="font-size: 40px; font-family:宋体;color:#ae0000"></div></td>
+                </tr>
+            </table>
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr>   
+    <tr>
+        <td width="5%">&nbsp;
+        </td>
+        <td width="90%">
+        </td>
+        <td width="5%">&nbsp;</td>
+    </tr>   
+ </table>
+</body>
+</html>
